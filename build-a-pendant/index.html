@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Pendants</title>
+	
+	<link rel="stylesheet" href="css/main.css" type="text/css">
+	<link rel="stylesheet" href="css/features.css" type="text/css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	
+</head>
+
+
+<body>
+
+<div id='wrapper'>
+
+	<h1>Message on a Pendant</h1>
+
+	<!-- Left side with all the controls -->
+	<div id='controls'>
+		<p>
+			Let hand stamped words on the elegant beauty of fine silver or bronze carry a message of love and inspiration to your loved ones that will last the test of time.
+		</P>
+		
+		<!-- Texture picture -->
+		<!--	<h2>Pick a texture</h2>
+			<div class='textures' id='swirls'></div>
+			<div class='textures' id='paper'></div>
+			<div class='textures' id='cloth'></div>
+			<div class='textures' id='circles'></div>
+		<br><br>
+		-->
+
+		<!-- Shape picker -->	
+			<h2>Pick a shape</h2>
+				<img class='shapes' id='circle' src='images/icon-circle.png'>
+				<img class='shapes' id='square' src='images/icon-square.png'>
+				<img class='shapes' id='heart' src='images/icon-heart.png'>
+			<br>
+
+		<!-- Pick a metal -->
+			<h2>Pick a metal</h2>
+				<input type='radio' name='metals' id='silver' checked='checked'>
+				<label for='silver'>&nbsp;fine silver</label><br>
+			
+				<input type='radio' name='metals' id='bronze'>
+				<label for='bronze'>&nbsp;bronze</label><br>
+
+			<!--<div class='metals' id='silver'></div>
+			<div class='metals' id='bronze'></div>-->
+			<br>
+
+			<h2>Pick a size</h2>
+				<input type='radio' name='size' id='sm'>
+				<label for='small'>&nbsp;small</label><br>
+			
+				<input type='radio' name='size' id='md' checked='checked'>
+				<label for='medium'>&nbsp;medium</label><br>
+			
+				<input type='radio' name='size' id='lg'>
+				<label for='large'>&nbsp;large</label><br>
+
+				<!--<option value='large'>Large</option>
+				<option value='medium'>Medium</option>
+				<option value='small'>Small</option>-->
+
+			<h2>Cost for this piece</h2>
+				<div id='cost-output'></div>
+
+		<!-- Message -->
+		<!--	<h2>Pick a message</h2>
+			<input type='radio' name='message' id='happy-birthday'>
+			<label for='happy-birthday'>&nbsp;Happy Birthday</label><br>
+			
+			<input type='radio' name='message' id='thank-you'>
+			<label for='thank-you'>&nbsp;Thank You</label><br>
+			
+			<input type='radio' name='message' id='congratulations'>
+			<label for='congratulations'>&nbsp;Congratulations</label><br>
+			
+			<input type='radio' name='message' id='miss-you'>
+			<label for='miss-you'>&nbsp;I miss you</label>
+		-->
+
+		<!-- Message -->	
+			<h2>Type a message</h2>	
+			<input type='text' id='message' class="changeMe" maxlength="14"> 
+			<div id='message-error'>Max 14 characters</div>
+
+			<br>
+			<!--<a href='javascript:'>change font size</a>-->
+
+			<form id="myform">
+    			<button>erase</button>
+    			<select id="fs"> 
+        			<option value="Arial">Arial</option>
+        			<option value="Verdana ">Verdana </option>
+        			<option value="Impact ">Impact </option>
+        			<option value="CenturyGothic">Gothic</option>
+    			</select>
+
+    			<select id="size">
+        			<option value="12">3mm</option>
+        			<option value="20">6mm</option>
+    			</select>
+			</form>
+			<br><br>
+
+			<!--<small>Find your own from Google</small><br>
+			<input type='text' id='sticker-search'>
+			<input type='button' id='sticker-search-btn' value='Search'>
+			<br>
+			<small>Ex: &ldquo;unicorns&rdquo;, &ldquo;sparkles&rdquo;, &ldquo;balloons&rdquo;</small>
+			<div id='sticker-search-results'></div>-->
+
+					<!-- Shape picker -->	
+			<h2>Pick a Chain</h2>
+				<img class='shapes' src='images/chain.png'>
+				<img class='shapes' src='images/chain.png'>
+				<img class='shapes' src='images/chain.png'>
+				<img class='shapes' src='images/chain.png'>
+			<br>
+				<p>Rice</p>
+			   	<select id="rice">
+        			<option value="16">16"</option>
+        				<!-- Off until toggled on-->
+        				<option value="2.5"> 2.5mm</option>
+        			<option value="20">20"</option>
+        				<option value="2.5"> 2.5mm</option>
+        				<option value="3">3mm</option>
+    			</select>
+    			<p>Snake</p>
+			   	<select id="Snake">
+        			<option value="16">16"</option>
+        				<!-- Off until toggled on-->
+        				<option value="2"> 2mm</option>
+        			<option value="20">20"</option>
+        				<option value="2"> 2mm</option>
+        				<option value="2.5">2.5mm</option>
+    			</select>
+
+    			<p>Omega</p>
+			   	<select id="omega">
+        			<option value="16">16"</option>
+        				<!-- Off until toggled on-->
+        				<option value="3"> 3mm</option>
+        				<option value="4"> 4mm</option>
+        			<option value="20">18"</option>
+        				<option value="4"> 4mm</option>
+        				<option value="6">6mm</option>
+    			</select>
+
+    			<p>Neoprene</p>
+			   	<select id="neoprene">
+        			<option value="16">16"</option>
+        				<!-- Off until toggled on-->
+        				<option value="2.5"> 2.5mm</option>
+        				<option value="3"> 3mm</option>
+        			<option value="20">18"</option>
+        				<option value="2.5"> 2.5mm</option>
+        				<option value="3">3mm</option>
+    			</select>	</div><!--end controls-->
+
+    			<h2>Cost for this chain is</h2>
+					<div id='chain-cost-output'></div>
+	
+	<!-- Right side with the live preview -->
+	<div id='preview'>
+	
+		<div id='preview-background'>
+			<div id='canvas'>
+				<!-- prepend new content -->
+				<div id='message-output' class='changeMe'></div>
+				<div id='total-output'></div>
+			</div>
+		</div>
+		
+		<!-- Buttons -->
+		<input type='button' id='refresh-btn' value='Start over'>
+		<input type='button' id='print-btn' value='Print'>
+	</div>
+
+	
+</div><!--Wrapper div-->
+
+<script src="js/pendant-o-matic.js"></script>
+	
+</body>
+
+</html>

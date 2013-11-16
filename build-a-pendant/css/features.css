@@ -1,0 +1,95 @@
+/*-------------------------------------------------------------------------------------------------
+Pick a metal
+-------------------------------------------------------------------------------------------------*/
+.metals {
+	width:40px;
+	height:40px;
+	border:1px solid #a9a9a9;
+	float:left;
+	cursor: pointer;
+}
+#silver {
+	background-color:silver;
+}
+#bronze {
+
+	background: #975a38;
+}
+
+
+/*-------------------------------------------------------------------------------------------------
+Texture picker
+-------------------------------------------------------------------------------------------------*/
+.textures {
+	width:80px;
+	height:40px;
+	border:1px solid grey;
+	float:left;
+	cursor: pointer;
+}
+#swirls {
+	background-image: url('../images/texture-swirls.png');
+}
+#paper {
+	background-image: url('../images/texture-paper.png');
+}
+#cloth {
+	background-image: url('../images/texture-cloth.png');
+}
+#circles {
+	background-image: url('../images/texture-circles.png');
+}
+
+/*-------------------------------------------------------------------------------------------------
+Message
+-------------------------------------------------------------------------------------------------*/
+/*
+static - default normal flow of the page, stack top to bottom, left to right
+fixed - Browser window ... positioned relative to the browser window ... ignors scrolling
+absolute - Parent elements ... 
+relative - Where it would have been ... shift elements
+
+caviot to absolute position ... the parent element has to have a position property.
+so give it relative and don't reposition it anywhere.
+*/
+
+#message-output {
+	text-align:center;
+	font-size:35px;
+	position:absolute;
+	top:100px;
+	height:50px;
+	width:100%;
+}
+
+#message-output {
+	text-align:center;
+	font-size:30px;
+	width:100%;
+	position:absolute;
+	top:150px;	
+}
+
+#message-error {
+	/*color: red;*/
+	padding-top:2px;
+}
+/*-------------------------------------------------------------------------------------------------
+Shapes
+-------------------------------------------------------------------------------------------------*/
+.shapes {
+	cursor:pointer;
+	z-index:2; /* Make sure it's above the card */
+}
+/* Any time you use draggable you may want to use absolute position property*/
+.shapes_on_card {
+	position:absolute;
+	top:0px;
+	left:0px;
+	/*cursor:move;*/
+}
+ui-draggable-dragging {
+	position:absolute;
+	z-index: 1;
+}
+
