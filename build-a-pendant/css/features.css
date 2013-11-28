@@ -1,7 +1,7 @@
 /*-------------------------------------------------------------------------------------------------
 Pick a metal
 -------------------------------------------------------------------------------------------------*/
-.metals {
+/*.metals {
 	width:40px;
 	height:40px;
 	border:1px solid #a9a9a9;
@@ -14,31 +14,10 @@ Pick a metal
 #bronze {
 
 	background: #975a38;
-}
+}*/
 
 
-/*-------------------------------------------------------------------------------------------------
-Texture picker
--------------------------------------------------------------------------------------------------*/
-.textures {
-	width:80px;
-	height:40px;
-	border:1px solid grey;
-	float:left;
-	cursor: pointer;
-}
-#swirls {
-	background-image: url('../images/texture-swirls.png');
-}
-#paper {
-	background-image: url('../images/texture-paper.png');
-}
-#cloth {
-	background-image: url('../images/texture-cloth.png');
-}
-#circles {
-	background-image: url('../images/texture-circles.png');
-}
+
 
 /*-------------------------------------------------------------------------------------------------
 Message
@@ -53,26 +32,38 @@ caviot to absolute position ... the parent element has to have a position proper
 so give it relative and don't reposition it anywhere.
 */
 
-#message-output {
-	text-align:center;
+/*#message-output {
+	text-align:right;
 	font-size:35px;
 	position:absolute;
-	top:100px;
+	top:500px;
 	height:50px;
 	width:100%;
+	z-index: 5;
+}*/
+
+
+span {
+  display: table-cell;
+  vertical-align: middle;
 }
 
-#message-output {
+/*#message-output {
 	text-align:center;
 	font-size:30px;
 	width:100%;
 	position:absolute;
 	top:150px;	
-}
-
+}*/
 #message-error {
 	/*color: red;*/
 	padding-top:2px;
+}
+
+#chain-cost-output {
+	text-align:right;
+	font-size:12px;
+	z-index: 2;
 }
 /*-------------------------------------------------------------------------------------------------
 Shapes
@@ -92,4 +83,16 @@ ui-draggable-dragging {
 	position:absolute;
 	z-index: 1;
 }
+
+/*-------------------------------------------------------------------------------------------------
+Toggle length show / hide
+-------------------------------------------------------------------------------------------------*/
+.item-length { display: none; }
+.show-length { display: block; }
+
+/*-------------------------------------------------------------------------------------------------
+Toggle thickness show / hide
+-------------------------------------------------------------------------------------------------*/
+.item-thickness { display: none; }
+.show-thickness { display: block; }
 

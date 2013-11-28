@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/features.css" type="text/css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	
+
 </head>
 
 
@@ -23,36 +23,67 @@
 		<p>
 			Let hand stamped words on the elegant beauty of fine silver or bronze carry a message of love and inspiration to your loved ones that will last the test of time.
 		</P>
-		
-		<!-- Texture picture -->
-		<!--	<h2>Pick a texture</h2>
-			<div class='textures' id='swirls'></div>
-			<div class='textures' id='paper'></div>
-			<div class='textures' id='cloth'></div>
-			<div class='textures' id='circles'></div>
-		<br><br>
-		-->
+			<!--http://jsfiddle.net/pV8yg/-->
+			<hr>
+				<h2>Pick a shape</h2>
+				<div class="radioLeft">
+					<label><input type="radio" name="shapes" value="circle" checked>
+					circle</label>
+					<input type="radio" name="shapes" value="square">
+					
+					<label>square</label>
+					<input type="radio" name="shapes" value="heart">
+					<label>heart</label>
+					<br>
+					<br>
+				</div>
+					<br><br>
+			<hr>
+				<h2>Pick a metal</h2>
+				<div class="radioLeft">
+					<input type="radio" name="metals" value="silver" checked>silver
+					<input type="radio" name="metals" value="bronze">
+					bronze<br>
+				</div><!--radioLeft-->
+					<br><br>
+			<hr>
+				<h2>Pick a size</h2>
+					<input type="radio" name="size" value="sm">sm
+					<input type="radio" name="size" value="md" checked>
+					md
+					<input type="radio" name="size" value="lg">
+					lg
+                    <br>
+					<br>
+					This pendant costs: $<span id='output'></span>
+					<br><br>
+
+					<button>Recalculate</button>
+
 
 		<!-- Shape picker -->	
-			<h2>Pick a shape</h2>
-				<img class='shapes' id='circle' src='images/icon-circle.png'>
+			<!--<h2>Pick a shape</h2>
+
+				<input type='radio' class='shapes' id='circle'>
+				<label for='circle'><img src='images/icon-circle.png'></label><br>
+
 				<img class='shapes' id='square' src='images/icon-square.png'>
 				<img class='shapes' id='heart' src='images/icon-heart.png'>
-			<br>
-
+				<br>
+			-->
 		<!-- Pick a metal -->
-			<h2>Pick a metal</h2>
+			<!--<h2>Pick a metal</h2>
 				<input type='radio' name='metals' id='silver' checked='checked'>
 				<label for='silver'>&nbsp;fine silver</label><br>
 			
 				<input type='radio' name='metals' id='bronze'>
 				<label for='bronze'>&nbsp;bronze</label><br>
-
+			-->
 			<!--<div class='metals' id='silver'></div>
 			<div class='metals' id='bronze'></div>-->
 			<br>
 
-			<h2>Pick a size</h2>
+			<!--<h2>Pick a size</h2>
 				<input type='radio' name='size' id='sm'>
 				<label for='small'>&nbsp;small</label><br>
 			
@@ -62,13 +93,8 @@
 				<input type='radio' name='size' id='lg'>
 				<label for='large'>&nbsp;large</label><br>
 
-				<!--<option value='large'>Large</option>
-				<option value='medium'>Medium</option>
-				<option value='small'>Small</option>-->
-
-			<h2>Cost for this piece</h2>
-				<div id='cost-output'></div>
-
+				Cost for this pendant: $<span id='pendant-cost-output'>0.00</span> <br><br>
+			-->
 		<!-- Message -->
 		<!--	<h2>Pick a message</h2>
 			<input type='radio' name='message' id='happy-birthday'>
@@ -85,14 +111,12 @@
 		-->
 
 		<!-- Message -->	
-			<h2>Type a message</h2>	
-			<input type='text' id='message' class="changeMe" maxlength="14"> 
-			<div id='message-error'>Max 14 characters</div>
+			<h2>Type a message</h2>
+			<input type='text' id='message' class="changeMe" maxlength="16"> 
+			<div id='message-error'>Max 16 characters</div>
 
 			<br>
 			<!--<a href='javascript:'>change font size</a>-->
-
-			<form id="myform">
     			<button>erase</button>
     			<select id="fs"> 
         			<option value="Arial">Arial</option>
@@ -102,10 +126,9 @@
     			</select>
 
     			<select id="size">
-        			<option value="12">3mm</option>
-        			<option value="20">6mm</option>
+        			<option value="12">12 px</option>
+        			<option value="24">24 px</option>
     			</select>
-			</form>
 			<br><br>
 
 			<!--<small>Find your own from Google</small><br>
@@ -115,77 +138,131 @@
 			<small>Ex: &ldquo;unicorns&rdquo;, &ldquo;sparkles&rdquo;, &ldquo;balloons&rdquo;</small>
 			<div id='sticker-search-results'></div>-->
 
-					<!-- Shape picker -->	
+			<!-- Chain picker -->	
 			<h2>Pick a Chain</h2>
-				<img class='shapes' src='images/chain.png'>
-				<img class='shapes' src='images/chain.png'>
-				<img class='shapes' src='images/chain.png'>
-				<img class='shapes' src='images/chain.png'>
+				<img class='chains' id="rice" src='images/chain-rice.png'>
+				<img class='chains' id="snake" src='images/chain-snake.png'>
+				<img class='chains' id="omega" src='images/chain-omega.png'>
+				<img class='chains' id="neoprene" src='images/cord-neoprene.png'>
 			<br>
+
+        		<!-- Off until id="rice" is clicked -->
 				<p>Rice</p>
-			   	<select id="rice">
-        			<option value="16">16"</option>
-        				<!-- Off until toggled on-->
-        				<option value="2.5"> 2.5mm</option>
-        			<option value="20">20"</option>
-        				<option value="2.5"> 2.5mm</option>
-        				<option value="3">3mm</option>
-    			</select>
+			   		<select class="rice item-length">
+        				<option value="rice-16">16"</option>
+        				<option value="rice-20">20"</option>
+    				</select>
+
+    				 	<select id="rice-16" class='item-length'>
+    				        <option value="30">2mm</option> 
+    				        <option value="40">3mm</option>  
+    				    </select>
+
+    				 	<select id="rice-20" class='item-length'>
+    				        <option value="30">2mm</option> 
+    				        <option value="40">2.5mm</option>  
+    				    </select>
+
+    			<!-- Off until id="snake" is clicked -->
     			<p>Snake</p>
-			   	<select id="Snake">
-        			<option value="16">16"</option>
-        				<!-- Off until toggled on-->
-        				<option value="2"> 2mm</option>
-        			<option value="20">20"</option>
-        				<option value="2"> 2mm</option>
-        				<option value="2.5">2.5mm</option>
-    			</select>
+			   		<select class="snake item-length">
+        				<option value="16">16"</option>
+        				<option value="20">20"</option>
+    				</select>
 
+    				 	<select id="snake-16" class='item-length'>
+    				        <option value="30">2mm</option> 
+    				        <option value="40">3mm</option>  
+    				    </select>
+
+       				 	<select id="snake-20" class='item-length'>
+    				        <option value="30">1.5</option> 
+    				    </select> 				    
+
+        		<!-- Off until id="omega" is clicked -->
     			<p>Omega</p>
-			   	<select id="omega">
-        			<option value="16">16"</option>
-        				<!-- Off until toggled on-->
-        				<option value="3"> 3mm</option>
-        				<option value="4"> 4mm</option>
-        			<option value="20">18"</option>
-        				<option value="4"> 4mm</option>
-        				<option value="6">6mm</option>
-    			</select>
+			   		<select class="omega item-length">
+        				<option value="16">16"</option>
+        				<option value="18">18"</option>
+    				</select>
 
+       				 	<select id="omega-16" class='item-length'>
+    				        <option value="40">3mm</option> 
+        					<option value="50">4mm</option>
+    				    </select>
+
+       				 	<select id="omega-18" class='item-length'>
+    				        <option value="60">4mm</option> 
+        					<option value="90">6mm</option>
+    				    </select>
+
+        		<!-- Off until id="neoprene" is clicked -->
     			<p>Neoprene</p>
-			   	<select id="neoprene">
-        			<option value="16">16"</option>
-        				<!-- Off until toggled on-->
-        				<option value="2.5"> 2.5mm</option>
-        				<option value="3"> 3mm</option>
-        			<option value="20">18"</option>
-        				<option value="2.5"> 2.5mm</option>
-        				<option value="3">3mm</option>
-    			</select>	</div><!--end controls-->
+			   		<select class="neoprene item-length">
+        				<option value="16">16"</option>
+        				<option value="18">18"</option>
+    				</select>
 
-    			<h2>Cost for this chain is</h2>
-					<div id='chain-cost-output'></div>
-	
+       				 	<select id="neoprene-16" class='item-length'>
+    				        <option value="10">2.5mm</option> 
+        					<option value="15">3mm</option>
+    				    </select>
+
+       				 	<select id="neoprene-18" class='item-length'>
+    				        <option value="15">2.5mm</option> 
+        					<option value="20">3mm</option>
+    				    </select>
+
+    					<br>	
+							Cost for this chain: $<span id='chain-cost-output'>0.00</span> 
+						<br><br>
+
+	</div><!--end controls-->
+
 	<!-- Right side with the live preview -->
 	<div id='preview'>
 	
 		<div id='preview-background'>
 			<div id='canvas'>
-				<!-- prepend new content -->
-				<div id='message-output' class='changeMe'></div>
-				<div id='total-output'></div>
-			</div>
-		</div>
+				<div id='pendant-container'>
+					<div id='pendant'></div>
+				</div><!--pendant-container-->
+				<div id='message-window'>
+					<div id='message-output' class='changeMe'></div>
+				</div><!--message-window-->	
+
+			</div><!--canvas-->
+			Total: $<span id='total'>0.00</span> <br><br>
+		</div><!--end preview-background-->
 		
 		<!-- Buttons -->
 		<input type='button' id='refresh-btn' value='Start over'>
 		<input type='button' id='print-btn' value='Print'>
-	</div>
+	</div><!-- end preview-->
 
-	
 </div><!--Wrapper div-->
 
-<script src="js/pendant-o-matic.js"></script>
+<script src="js/build-a-pendant.js"></script>
+
+<script>
+	/*---------------------------------------------------------------------------
+	listenters
+	---------------------------------------------------------------------------*/
+	$('button').click(calculate);
+
+	function calculate() {
+
+		// May be metal cost per gram * size gram weight
+		//var pendant-size = $('').val();
+
+		// Chain selection, length and thickness
+		var chain_thickness = $('select[name=thickness]');
+
+		console.log(chain-thickness);
+
+	}				
+
+</script>
 	
 </body>
 
