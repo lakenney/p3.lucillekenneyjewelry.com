@@ -309,7 +309,7 @@ react to the pendant size changing (line 4), and the font size changing (line 30
 // Global variable that can be accessed by multiple functions
 // passed it to line 261 in place of the hard coded 14
 // Default message length
-var maxMessageLength = 0;
+var maxMessageLength = 16;
 
 function changeMaxLength(shape, size, fontsize) {
 
