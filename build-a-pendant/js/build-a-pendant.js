@@ -298,8 +298,9 @@ $("#fs").change(function() {
 
 $("#size").change(function() {
     $('.changeMe').css("fontsize", $(this).val() + "px");
-	//$("#size") = maxMessageLength(shape,size,fontsize);
-
+	
+	$(".changeMe") = maxMessageLength(shape,size,fontsize);
+	console.log(changeMe);
 });
 
 /*-------------------------------------------------------------------------------------------------
@@ -309,7 +310,7 @@ react to the pendant size changing (line 4), and the font size changing (line 30
 // Global variable that can be accessed by multiple functions
 // passed it to line 261 in place of the hard coded 14
 // Default message length
-var maxMessageLength = 16;
+var maxMessageLength = 0;
 
 function changeMaxLength(shape, size, fontsize) {
 
@@ -498,20 +499,6 @@ Message picker
 	//console.log("You clicked this message".$message);
 
 });*/
-
-/*-------------------------------------------------------------------------------------------------
-(Bonus) Font chooser
--------------------------------------------------------------------------------------------------*/
-$("#fs").change(function() {
-    //alert($(this).val());
-    $('.changeMe').css("font-family", $(this).val());
-});
-
-$("#size").change(function() {
-    $('.changeMe').css("font-size", $(this).val() + "px");
-});
-
-
 
 /*-------------------------------------------------------------------------------------------------
 (Bonus) Font chooser
