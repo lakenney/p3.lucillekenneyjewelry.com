@@ -299,8 +299,8 @@ $("#fs").change(function() {
 $("#size").change(function() {
     $('.changeMe').css("fontsize", $(this).val() + "px");
 	
-	$(".changeMe") = maxMessageLength(shape,size,fontsize);
-	console.log(changeMe);
+//$(".changeMe") = maxMessageLength(shape,size,fontsize);
+//	console.log(changeMe);
 });
 
 /*-------------------------------------------------------------------------------------------------
@@ -416,7 +416,7 @@ function changeMaxLength(shape, size, fontsize) {
 
 }
 
-		changeMaxLength("shape","size", "fontsize");
+		//changeMaxLength("shape","size", "fontsize");
 
 /*-------------------------------------------------------------------------------------------------
 Toggle, chain specs hidden until clicked ... 
