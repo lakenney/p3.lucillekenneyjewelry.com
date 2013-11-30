@@ -431,14 +431,15 @@ $('.chains').click (function() {
 	// Get class=chains id attribute, show only those lengths
 	var chain_id = $(this).attr('id');
 	var length_value = $('.class').val();
-	//console.log(length_value);
+	var thickness_id = $(this).attr('length_value');
+	//console.log(length_id);
 
 	// Now I only want to show lengths of chain_selected
 	// so now i need chain_selected and chain_class?
 	$('.'+chain_id).toggleClass('show-length');	
 
 	// Toggling show-thickness after chain length value is clicked
-	$('.'+length_value).toggleClass('show-thickness');	
+	$('.'+thickness_id).toggleClass('show-thickness');	
   	//$('.' +item-length).toggleClass('show-thickness');
 });
 
@@ -563,7 +564,7 @@ $('#refresh-btn').click(function() {
 	$('#total-output').html("");
 		
 	// Remove any shapes
-	$('[name|=shapes]:checked').remove();
+	$('#pendant').html("");
 
 });
 
