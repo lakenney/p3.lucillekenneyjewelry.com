@@ -50,12 +50,12 @@ Buttons
 -------------------------------------------------------------------------------------------------*/
 input[type=button] {
   background-color: #7fbf4d;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7fbf4d), color-stop(100%, #63a62f));
-  background: -webkit-linear-gradient(top, #7fbf4d, #63a62f);
-  background: -moz-linear-gradient(top, #7fbf4d, #63a62f);
-  background: -ms-linear-gradient(top, #7fbf4d, #63a62f);
-  background: -o-linear-gradient(top, #7fbf4d, #63a62f);
-  background: linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -webkit-gradient(linear, left up, left bottom, color-stop(0%, #7fbf4d), color-stop(100%, #63a62f));
+  background-image: -webkit-linear-gradient(up, #7fbf4d, #63a62f);
+  background-image: -moz-linear-gradient(up, #7fbf4d, #63a62f);
+  background-image: -ms-linear-gradient(up, #7fbf4d, #63a62f);
+  background-image: -o-linear-gradient(up, #7fbf4d, #63a62f);
+  background-image: linear-gradient(up, #7fbf4d, #63a62f);
   border: 1px solid #63a62f;
   border-bottom: 1px solid #5b992b;
   border-radius: 3px;
@@ -73,12 +73,12 @@ input[type=button] {
 
 input[type=button]:hover {
     background-color: #76b347;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #76b347), color-stop(100%, #5e9e2e));
-    background: -webkit-linear-gradient(top, #76b347, #5e9e2e);
-    background: -moz-linear-gradient(top, #76b347, #5e9e2e);
-    background: -ms-linear-gradient(top, #76b347, #5e9e2e);
-    background: -o-linear-gradient(top, #76b347, #5e9e2e);
-    background: linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -webkit-gradient(linear, left up, left bottom, color-stop(0%, #76b347), color-stop(100%, #5e9e2e));
+    background-image: -webkit-linear-gradient(up, #76b347, #5e9e2e);
+    background-image: -moz-linear-gradient(up, #76b347, #5e9e2e);
+    background-image: -ms-linear-gradient(up, #76b347, #5e9e2e);
+    background-image: -o-linear-gradient(up, #76b347, #5e9e2e);
+    background-image: linear-gradient(up, #76b347, #5e9e2e);
     -webkit-box-shadow: inset 0 1px 0 0 #8dbf67;
     box-shadow: inset 0 1px 0 0 #8dbf67;
     cursor: pointer; 
@@ -170,6 +170,7 @@ Output right side background
   z-index: 5;
   vertical-align: middle;
   display: table-cell;
+  text-align: center;
 }
 #message-window {
   border: solid 5px yellow;

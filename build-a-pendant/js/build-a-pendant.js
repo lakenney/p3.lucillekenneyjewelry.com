@@ -272,7 +272,7 @@ $('#message').keyup(function() {
    	if(how_many_left == 0) {
     	$('#message-error').css('color', 'red');
     }
-    // If number of characters left is less than 5 turn it orange
+    // If number of characters left is less than 3 turn it orange
     else if(how_many_left < 3){
     	$('#message-error').css('color', 'orange');
     }
@@ -310,9 +310,10 @@ react to the pendant size changing (line 4), and the font size changing (line 30
 // Global variable that can be accessed by multiple functions
 // passed it to line 261 in place of the hard coded 14
 // Default message length
-var maxMessageLength = 0;
+var maxMessageLength =0;
 
 function changeMaxLength(shape, size, fontsize) {
+//var maxMessageLength = 16;
 
 	// Assign a new message length when the pendant size and the font size changes.
 	// nested if statements that look at both the current pendant size and shape, and the 
@@ -415,8 +416,9 @@ function changeMaxLength(shape, size, fontsize) {
         $('#message-error').html("Max "+maxMessageLength.toString() +" characters");
 
 }
-
-		//changeMaxLength("shape","size", "fontsize");
+		// changeMaxLength(shape,size,fontsize)
+		// Hard coded
+		changeMaxLength("circle","sm", "24");
 
 /*-------------------------------------------------------------------------------------------------
 Toggle, chain specs hidden until clicked ... 
@@ -424,25 +426,20 @@ see: http://www.metaltoad.com/blog/detect-which-element-was-clicked-using-jquery
 -------------------------------------------------------------------------------------------------*/
 
 // Implementing toggle
-// $('.toggle').on('click', function() {}); 
-// is equivalent of $('.toggle').click(function() {});
 $('.chains').click (function() {
 
-	// Use jquery to determine which chain was clicked 
-	// since I only want to show those lengths
-	//var selected-chain = $(this).attr('id');
+	// Get class=chains id attribute, show only those lengths
 	var chain_id = $(this).attr('id');
-	var length_value = $('.class').val() ;
-	// var thickness = ...;
-	console.log(length_value);
+	var length_value = $('.class').val();
+	//console.log(length_value);
 
 	// Now I only want to show lengths of chain_selected
 	// so now i need chain_selected and chain_class?
 	$('.'+chain_id).toggleClass('show-length');	
 
-	// Toggling show-thickness on after chain length is clicked
-	//$('.'+length_value).toggleClass('show-length');	
-  	//$('.item-length').toggleClass('show-length');
+	// Toggling show-thickness after chain length value is clicked
+	$('.'+length_value).toggleClass('show-thickness');	
+  	//$('.' +item-length).toggleClass('show-thickness');
 });
 
 
@@ -614,7 +611,7 @@ $('#print-btn').click(function() {
     new_tab_contents += '<link rel="stylesheet" href="css/features.css" type="text/css">';
     new_tab_contents += '</head>';
     new_tab_contents += '<body>'; 
-    new_tab_contents += canvas; // Here's where we add the card to our HTML for the new tab
+    new_tab_contents += canvas; // Here's where we add the pendant to our HTML for the new tab
     new_tab_contents += pendant; // Here's where we add the card to our HTML for the new tab
     new_tab_contents += '</body></html>';
     

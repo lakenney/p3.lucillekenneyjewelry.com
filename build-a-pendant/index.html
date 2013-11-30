@@ -103,7 +103,7 @@
         				<option value="rice-16">16"</option>
         				<option value="rice-20">20"</option>
     				</select>
-
+    					<!--Off until rice value is clicked-->
     				 	<select id="rice-16" class='item-length'>
     				        <option value="30">2mm</option> 
     				        <option value="40">3mm</option>  
@@ -202,9 +202,6 @@
 	$('button').click(calculate);
 
 	function calculate() {
-
-		// May be metal cost per gram * size gram weight
-		//var pendant-size = $('').val();
 
 		// Chain selection, length and thickness
 		var chain_thickness = $('select[name=thickness]');
