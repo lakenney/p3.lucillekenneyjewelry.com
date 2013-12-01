@@ -96,14 +96,15 @@
 				<img class='chains' id="omega" src='images/chain-omega.png'>
 				<img class='chains' id="neoprene" src='images/cord-neoprene.png'>
 			<br>
-
         		<!-- Off until id="rice" is clicked -->
 				<p>Rice</p>
+				<div class='choose-length'></div>
 			   		<select class="rice item-length">
         				<option value="rice-16">16"</option>
         				<option value="rice-20">20"</option>
     				</select>
     					<!--Off until rice value is clicked-->
+						<div class='choose-thickness'></div>
     				 	<select id="rice-16" class='item-length'>
     				        <option value="30">2mm</option> 
     				        <option value="40">3mm</option>  
@@ -121,6 +122,7 @@
         				<option value="20">20"</option>
     				</select>
 
+					<div class='choose-thickness'></div>
     				 	<select id="snake-16" class='item-length'>
     				        <option value="30">2mm</option> 
     				        <option value="40">3mm</option>  
@@ -195,22 +197,7 @@
 
 <script src="js/build-a-pendant.js"></script>
 
-<script>
-	/*---------------------------------------------------------------------------
-	listeners
-	---------------------------------------------------------------------------*/
-	$('button').click(calculate);
 
-	function calculate() {
-
-		// Chain selection, length and thickness
-		var chain_thickness = $('select[name=thickness]');
-
-		console.log(chain-thickness);
-
-	}				
-
-</script>
 	
 </body>
 

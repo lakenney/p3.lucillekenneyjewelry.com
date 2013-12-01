@@ -425,22 +425,38 @@ Toggle, chain specs hidden until clicked ...
 see: http://www.metaltoad.com/blog/detect-which-element-was-clicked-using-jquery
 -------------------------------------------------------------------------------------------------*/
 
-// Implementing toggle
+// Bind event to image with class chains
 $('.chains').click (function() {
 
 	// Get class=chains id attribute, show only those lengths
 	var chain_id = $(this).attr('id');
-	var length_value = $('.class').val();
-	var thickness_id = $(this).attr('length_value');
-	//console.log(length_id);
 
-	// Now I only want to show lengths of chain_selected
-	// so now i need chain_selected and chain_class?
+	// Show only lengths for chain image clicked
 	$('.'+chain_id).toggleClass('show-length');	
+	
+	// Message to choose a length
+    //$('.choose-length').html('Choose a chain length');
 
-	// Toggling show-thickness after chain length value is clicked
-	$('.'+thickness_id).toggleClass('show-thickness');	
-  	//$('.' +item-length).toggleClass('show-thickness');
+
+});
+
+// Bind event to length selected
+$('.item-length').change(function(){
+
+	// Get the value of length selected which is same name as thickness
+	var $this = $(this);
+	var thickness_id = $(this).val();
+	console.log(thickness_id);
+	//var chainCost = $(thickness_id).val();
+	//console.log(chainCost);
+
+	// Toggling show-thickness
+	$('#'+thickness_id).toggleClass('show-thickness');	
+    // Message to choose a thickness
+    //$('.choose-thickness').html('Choose a chain thickness');
+
+	//console.log(chainCost);
+	//$('#chain-cost-output').html(chainCost);
 });
 
 
@@ -459,44 +475,6 @@ $('.chains').click (function() {
   }
 });*/
 
-
-/*-------------------------------------------------------------------------------------------------
-Remove a shapes from the canvas
--------------------------------------------------------------------------------------------------*/
-$('#canvas').on('click', '.shapes', function() {
-//$('.shapes').click(function(){
-
-	// Remove any shapes
-	var new_image = $(this).remove();
-
-});
-
-/*-------------------------------------------------------------------------------------------------
-Message picker
--------------------------------------------------------------------------------------------------*/
-/*$('input[name=message]').click(function() {
-//$('.messages').click(function() {
-
-	 // Which radio button was clicked?
-	 // (Note here how we're storing a whole element in a variable... cool, huh?)
-	 //var radio_button = $(this);
-	 //var message = $(this).val();
-	 //console.log(message);
-
-	 // Get the label element that comes immediately after this radio button 
-	 var label = $(this).next();
-	 //console.log(label);
-
-	 // Now that we know the label, grab the text inside of it (That's our message!)
-	 var message = label.html();
-	 //console.log(message);
-		
-	// Place the message in the card
-	$('#message-output').html(message);
-
-	//console.log("You clicked this message".$message);
-
-});*/
 
 /*-------------------------------------------------------------------------------------------------
 (Bonus) Font chooser
@@ -568,6 +546,43 @@ $('#refresh-btn').click(function() {
 
 });
 
+/*-------------------------------------------------------------------------------------------------
+Remove a shapes from the canvas
+-------------------------------------------------------------------------------------------------*/
+$('#canvas').on('click', '.shapes', function() {
+//$('.shapes').click(function(){
+
+	// Remove any shapes
+	var new_image = $(this).remove();
+
+});
+
+/*-------------------------------------------------------------------------------------------------
+Message picker
+-------------------------------------------------------------------------------------------------*/
+/*$('input[name=message]').click(function() {
+//$('.messages').click(function() {
+
+	 // Which radio button was clicked?
+	 // (Note here how we're storing a whole element in a variable... cool, huh?)
+	 //var radio_button = $(this);
+	 //var message = $(this).val();
+	 //console.log(message);
+
+	 // Get the label element that comes immediately after this radio button 
+	 var label = $(this).next();
+	 //console.log(label);
+
+	 // Now that we know the label, grab the text inside of it (That's our message!)
+	 var message = label.html();
+	 //console.log(message);
+		
+	// Place the message in the card
+	$('#message-output').html(message);
+
+	//console.log("You clicked this message".$message);
+
+});*/
 
 /*-------------------------------------------------------------------------------------------------
 Print
@@ -613,7 +628,7 @@ $('#print-btn').click(function() {
     new_tab_contents += '</head>';
     new_tab_contents += '<body>'; 
     new_tab_contents += canvas; // Here's where we add the pendant to our HTML for the new tab
-    new_tab_contents += pendant; // Here's where we add the card to our HTML for the new tab
+    new_tab_contents += pendant; // Here's where we add pendant css to center to text to our HTML for the new tab
     new_tab_contents += '</body></html>';
     
 	// Ok, our card is ready to go, we just need to work on opening the tab
