@@ -446,7 +446,7 @@ $('.item-length').change(function(){
 	// Get the value of length selected which is same name as thickness
 	var $this = $(this);
 	var thickness_id = $(this).val();
-	console.log(thickness_id);
+	//console.log(thickness_id);
 	//var chainCost = $(thickness_id).val();
 	//console.log(chainCost);
 
