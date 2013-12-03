@@ -8,11 +8,13 @@ Dynamic Web Development
 Harvard Extension
 Submitted 6 Dec 2013
 
-Note here we use the .on() method instead of just .click()
-This is because we want this listener to also apply to the Google Image Stickers which are
-added *after* the page loads. In order to do this, on has to be used, and we have to delegate the
-listening for .stickers to the #controls div.
 -------------------------------------------------------------------------------------------------*/	
+var maxMessageLength = 16;
+var fontsize = 12;
+
+/*-------------------------------------------------------------------------------------------------
+Pick a shape, metal and size
+-------------------------------------------------------------------------------------------------*/
 $('input:radio').change(function () {
     //var $this = $(this);
     var shapes =  $('[name|=shapes]:checked').val();
@@ -29,9 +31,15 @@ $('input:radio').change(function () {
     var newImage = "<img src='" + imageURL + "'></img";
 	$('#pendant').html(newImage);
 	printCost(shapes,size,metals);
-	//maxMessageLength(shape,size,fontsize);
+	console.log("I've changed");
+	console.log('[name|=shapes]:checked')
+	//changeMaxLength(shape,size,fontsize);
+	changeMaxLength($('[name|=shapes]:checked').val(),$('[name|=size]:checked').val());
  });
 
+/*-------------------------------------------------------------------------------------------------
+Calculate pendant cost according to shape, size and metal
+-------------------------------------------------------------------------------------------------*/
 function printCost(shape,size,metal) {
 		
 	//console.log(shape);
@@ -169,7 +177,7 @@ function printCost(shape,size,metal) {
 }
 
 /*-------------------------------------------------------------------------------------------------
-Round up to the penny
+Round pendant cost to the penny
 -------------------------------------------------------------------------------------------------*/	
 function roundPenny(pendantCost){
 
@@ -182,75 +190,142 @@ function roundPenny(pendantCost){
 	return result;
 }
 
-/*//$('#controls').on('click', '.shapes', function() {
-$('.shapes').click(function(){
 
-	var imageID = $(this).attr('id');
-	//var size = // the id of the button clicked;
-	//var metal = // the id of the radiobutton that is checked
+/*-------------------------------------------------------------------------------------------------
+changeMaxLength to be called from functions that 
+react to the pendant size changing (line 4), and the font size changing (line 301)
+-------------------------------------------------------------------------------------------------*/
+// Global variable that can be accessed by multiple functions
+// passed it to line 261 in place of the hard coded 16
+// Default message length
 
+function changeMaxLength(shape, size) {
+//var maxMessageLength = 16;
 
-	var imageURL = "images/" + imageID + "-" + ".png";
-	//var imageURL = "images/" + imageID + "-" + size + "-" + metal + ".png";
-	//imageURL ="/images/heart-md.png";
-	//console.log(imageURL);
+	// Assign a new message length when the pendant size and the font size changes.
+	// nested if statements that look at both the current pendant size and shape, and the 
+	// current font size, and set maxMessageLength appropriately
+	// call that function that sets the max length in two cases -- 
+	//	1)if the font size is changed (in the function that starts on like 302)
+	//  2) And when the pendant size changes -- so that's the function that starts on line 4
 
-	// Alternative method: Find which image was clicked then find image source
-	var newImage = "<img src='" + imageURL + "'></img";
+	if(shape == "circle") {
+		if (size == "sm") {
+			// What is the max amount of letters that fit in the small circle
+			if (fontsize == "12") {
+				maxMessageLength = 8;
+				$("#message").attr("maxlength","8");
+				// Save new message
+			} 
+			else if (fontsize == "24") {
+				maxMessageLength = 4;
+				$("#message").attr("maxlength","4");
+			}
+		} 
 
-	// Hard coded url
-	//var new_image = "<img src='images/heart-lg.png'></img>";
-	
-	$('#canvas').html(newImage);
-	console.log(canvas);
+		else if (size == "md") {
+			if (fontsize == "12") {
+				maxMessageLength = 12;
+				$("#message").attr("maxlength","12");
+			} 
+			else if (fontsize == "24") {
+				maxMessageLength = 6;
+				$("#message").attr("maxlength","6");
+			}
+		} 
 
+		else if (size == "lg") {
+			if (fontsize == "12") {
+				maxMessageLength = 14;
+				$("#message").attr("maxlength","14");
+			} 
+			else if (fontsize == "24") {
+				maxMessageLength = 9;
+				$("#message").attr("maxlength","9");
+			}
+		}
+	} 
 
-	// Clone whatever sticker was clicked
-	//var new_image = $(this).clone();
-	//console.log(new_image);
+	else if (shape == "square") {
+		if (size == "sm") {
+			// What is the max amount of letters that fit in the small square
+			if (fontsize == "12") {
+				maxMessageLength = 9;
+				$("#message").attr("maxlength","9");
+			} 
+			else if (fontsize == "24") {
+				maxMessageLength = 4;
+				$("#message").attr("maxlength","4");
+			}
+		} 
 
-	//new_image.addClass('shapes_on_card');
+		else if (size == "md") {
+			if (fontsize == "12") {
+				maxMessageLength = 12;
+				$("#message").attr("maxlength","12");
+			} 
+			else if (fontsize == "24") {
+				maxMessageLength = 6;
+				$("#message").attr("maxlength","6");
+			}
+		} 
 
-	// Place the clone in the canvas (.html overwrites vs prepend or append)
-	//$('#canvas').prepend(new_image);
+		else if (size == "lg") {
+			if (fontsize == "12") {
+				maxMessageLength = 14;
+				$("#message").attr("maxlength","14");
+			} 
+			else if (fontsize == "24") {
+				maxMessageLength = 8;
+				$("#message").attr("maxlength","8");
+			}
+		}
+	} 
 
-	//new_image.draggable({containment: "#canvas", opacity:.35 });
+	else if (shape == "heart") {
+		if (size == "sm") {
+			// What is the max amount of letters that fit in the small heart
+			if (fontsize == "12") {
+				maxMessageLength = 8;
+				$("#message").attr("maxlength","8");
+			} 
+			else if (fontsize == "24") {
+				maxMessageLength = 4;
+				$("#message").attr("maxlength","4");
+			}
+		} 
 
-});
+		else if (size == "md") {
+			if (fontsize == "12") {
+				maxMessageLength = 11;
+				$("#message").attr("maxlength","11");
+			} 
+			else if (fontsize == "24") {
+				maxMessageLength = 5;
+				$("#message").attr("maxlength","5");
+			}
+		} 
 
-// Helper function for creating color and size of shape
-	// check which size is clicked
-	$('input[name=size]').click(function() {
-	//$('.size').click(function() {
+		else if (size == "lg") {
+			if (fontsize == "12") {
+				maxMessageLength = 16;
+				$("#message").attr("maxlength","16");
+			} 
+			else if (fontsize == "24") {
+				maxMessageLength = 9;
+				$("#message").attr("maxlength","9");
+			}
+		}
+	} 
 
-	// use jquery to detech which radiobutton is clicked	
-	var radio_button = $(this).attr('id');
-	var size = radio_button;
-	// console.log(size);
+        $('#message').attr("maxlength",maxMessageLength);
+        $('#message-error').html("Max "+maxMessageLength.toString() +" characters");
 
-	var imageSize = "images/" + size + "-" + ".png";
-	console.log(imageSize);
-
-	// Find which size was clicked then then add it to image in url source
-	//var imageURL = "images/" + imageID + "-" + imageSize + "-" + ".png";
-	//console.log(imageURL);
-
-	});
-
-	// check which metal is clicked
-	$('input[name=metals]').click(function() {
-	//$('.metals').click(function(){
-	
-	// use jquery to detech which radiobutton is clicked	
-	var radio_button = $(this).attr('id');
-	var imageMetal = radio_button;
-
-	console.log(imageMetal);
-
-	});
-
-	// build image url
-*/
+}
+		changeMaxLength($('[name|=shapes]:checked').val(),$('[name|=size]:checked').val()), fontsize;
+		// Hard coded
+		//changeMaxLength('shape','size', "24");
+		console.log("The maxMessageLength is " + maxMessageLength);
 
 /*-------------------------------------------------------------------------------------------------
 Message
@@ -288,137 +363,26 @@ $('#message').keyup(function() {
                 // Split on each letter i.e., no space in ''
                 //var random_word_array = random_word.split('');
 
+
 /*-------------------------------------------------------------------------------------------------
 (Bonus) Font chooser
 -------------------------------------------------------------------------------------------------*/
+
 $("#fs").change(function() {
     //alert($(this).val());
     $('.changeMe').css("font-family", $(this).val());
 });
 
-$("#size").change(function() {
-    $('.changeMe').css("fontsize", $(this).val() + "px");
-	
-//$(".changeMe") = maxMessageLength(shape,size,fontsize);
-//	console.log(changeMe);
+$("#fontsize").change(function() {
+    $('.changeMe').css("fontSize", $(this).val() + "px");
+    fontsize = $(this).val();
+
+
+	//changeMaxLength(shape,size);
+	//	console.log(changeMaxLength);
+	changeMaxLength($('[name|=shapes]:checked').val(),$('[name|=size]:checked').val());
 });
 
-/*-------------------------------------------------------------------------------------------------
-changeMaxLength to be called from functions that 
-react to the pendant size changing (line 4), and the font size changing (line 301)
--------------------------------------------------------------------------------------------------*/
-// Global variable that can be accessed by multiple functions
-// passed it to line 261 in place of the hard coded 14
-// Default message length
-var maxMessageLength =0;
-
-function changeMaxLength(shape, size, fontsize) {
-//var maxMessageLength = 16;
-
-	// Assign a new message length when the pendant size and the font size changes.
-	// nested if statements that look at both the current pendant size and shape, and the 
-	// current font size, and set maxMessageLength appropriately
-	// call that function that sets the max length in two cases -- 
-	//	1)if the font size is changed (in the function that starts on like 302)
-	//  2) And when the pendant size changes -- so that's the function that starts on line 4
-
-	if(shape == "circle") {
-		if (size == "sm") {
-			// What is the max amount of letters that fit in the small circle
-			if (fontsize == "12") {
-				maxMessageLength = 9;
-			} 
-			else if (fontsize == "24") {
-				maxMessageLength = 4;
-			}
-		} 
-
-		else if (size == "md") {
-			if (fontsize == "12") {
-				maxMessageLength = 12;
-			} 
-			else if (fontsize == "24") {
-				maxMessageLength = 6;
-			}
-		} 
-
-		else if (size == "lg") {
-			if (fontsize == "12") {
-				maxMessageLength = 14;
-			} 
-			else if (fontsize == "24") {
-				maxMessageLength = 9;
-			}
-		}
-	} 
-
-	else if (shape == "square") {
-		if (size == "sm") {
-			// What is the max amount of letters that fit in the small square
-			if (fontsize == "12") {
-				maxMessageLength = 9;
-			} 
-			else if (fontsize == "24") {
-				maxMessageLength = 4;
-			}
-		} 
-
-		else if (size == "md") {
-			if (fontsize == "12") {
-				maxMessageLength = 12;
-			} 
-			else if (fontsize == "24") {
-				maxMessageLength = 6;
-			}
-		} 
-
-		else if (size == "lg") {
-			if (fontsize == "12") {
-				maxMessageLength = 14;
-			} 
-			else if (fontsize == "24") {
-				maxMessageLength = 8;
-			}
-		}
-	} 
-
-	else if (shape == "heart") {
-		if (size == "sm") {
-			// What is the max amount of letters that fit in the small heart
-			if (fontsize == "12") {
-				maxMessageLength = 8;
-			} 
-			else if (fontsize == "24") {
-				maxMessageLength = 4;
-			}
-		} 
-
-		else if (size == "md") {
-			if (fontsize == "12") {
-				maxMessageLength = 11;
-			} 
-			else if (fontsize == "24") {
-				maxMessageLength = 5;
-			}
-		} 
-
-		else if (size == "lg") {
-			if (fontsize == "12") {
-				maxMessageLength = 16;
-			} 
-			else if (fontsize == "24") {
-				maxMessageLength = 9;
-			}
-		}
-	} 
-
-        $('#message').attr("maxlength",maxMessageLength);
-        $('#message-error').html("Max "+maxMessageLength.toString() +" characters");
-
-}
-		// changeMaxLength(shape,size,fontsize)
-		// Hard coded
-		changeMaxLength("circle","sm", "24");
 
 /*-------------------------------------------------------------------------------------------------
 Toggle, chain specs hidden until clicked ... 
@@ -436,7 +400,6 @@ $('.chains').click (function() {
 	
 	// Message to choose a length
     //$('.choose-length').html('Choose a chain length');
-
 
 });
 
@@ -457,6 +420,7 @@ $('.item-length').change(function(){
 
 	//console.log(chainCost);
 	//$('#chain-cost-output').html(chainCost);
+
 });
 
 
@@ -475,57 +439,6 @@ $('.item-length').change(function(){
   }
 });*/
 
-
-/*-------------------------------------------------------------------------------------------------
-(Bonus) Font chooser
--------------------------------------------------------------------------------------------------*/
-$("#fs").change(function() {
-    //alert($(this).val());
-    $('.changeMe').css("font-family", $(this).val());
-});
-
-$("#size").change(function() {
-    $('.changeMe').css("font-size", $(this).val() + "px");
-});
-
-
-/*-------------------------------------------------------------------------------------------------
-Message
--------------------------------------------------------------------------------------------------*/
-
-$('#message').keyup(function() {
-
-	// Find out what is in the field
-    var value = $(this).val();
-    //console.log(value);
-
-    // How many characters did the user type in
-    var how_many_characters = value.length;
-    //console.log(how_many_characters);
-
-    // Subtract the number of characters typed in from the max amount of char
-    var how_many_left = 14 - how_many_characters;
-
-    // If number of characters is zero turn it red
-   	if(how_many_left == 0) {
-    	$('#message-error').css('color', 'red');
-    }
-
-    // If number of characters is less than 5 turn it orange
-    else if(how_many_left < 5){
-    	$('#message-error').css('color', 'orange');
-    }
-
-    // Concatenate message with how_many_left
-    $('#message-error').html('You have ' + how_many_left + ' characters left');
-
-	// Inject the message into the output div on the canvas
-	$('#message-output').html(value);
-        
-	// Note: The "maxlength" attribute on the HTML element will prevent the user from entering more than 14 characters
-	// <input type='text' id='recipient' maxlength="14"> 
-
-});
 
 
 /*-------------------------------------------------------------------------------------------------
@@ -557,32 +470,6 @@ $('#canvas').on('click', '.shapes', function() {
 
 });
 
-/*-------------------------------------------------------------------------------------------------
-Message picker
--------------------------------------------------------------------------------------------------*/
-/*$('input[name=message]').click(function() {
-//$('.messages').click(function() {
-
-	 // Which radio button was clicked?
-	 // (Note here how we're storing a whole element in a variable... cool, huh?)
-	 //var radio_button = $(this);
-	 //var message = $(this).val();
-	 //console.log(message);
-
-	 // Get the label element that comes immediately after this radio button 
-	 var label = $(this).next();
-	 //console.log(label);
-
-	 // Now that we know the label, grab the text inside of it (That's our message!)
-	 var message = label.html();
-	 //console.log(message);
-		
-	// Place the message in the card
-	$('#message-output').html(message);
-
-	//console.log("You clicked this message".$message);
-
-});*/
 
 /*-------------------------------------------------------------------------------------------------
 Print
