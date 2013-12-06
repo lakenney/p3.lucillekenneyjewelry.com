@@ -205,15 +205,10 @@ $( document ).ready(function() {
 		return result;
 	}
 
-
 	/*-------------------------------------------------------------------------------------------------
 	changeMaxLength to be called from functions that 
 	react to the pendant size changing (line 4), and the font size changing (line 301)
 	-------------------------------------------------------------------------------------------------*/
-	// Global variable that can be accessed by multiple functions
-	// passed it to line 261 in place of the hard coded 16
-	// Default message length
-
 	function changeMaxLength(shape, size) {
 	//var maxMessageLength = 16;
 
@@ -221,17 +216,18 @@ $( document ).ready(function() {
 		// nested if statements that look at both the current pendant size and shape, and the 
 		// current font size, and set maxMessageLength appropriately
 		// call that function that sets the max length in two cases -- 
-		//	1)if the font size is changed (in the function that starts on like 302)
-		//  2) And when the pendant size changes -- so that's the function that starts on line 4
+		//	1) if the font size is changed (in the Font Chooser)
+		//  2) And when the pendant size changes -- input radio 
 
 		if(shape == "circle") {
 			if (size == "sm") {
-				// What is the max amount of letters that fit in the small circle
+				// Max amount of 12pt characters that fit in the small circle
 				if (fontsize == "12") {
 					maxMessageLength = 8;
 					$("#message").attr("maxlength","8");
 					// Save new message
-				} 
+				}
+				// Max amount of 24pt characters that fit in the small circle
 				else if (fontsize == "24") {
 					maxMessageLength = 4;
 					$("#message").attr("maxlength","4");
@@ -239,10 +235,12 @@ $( document ).ready(function() {
 			} 
 
 			else if (size == "md") {
+				// Max amount of 12pt characters that fit in the medium circle
 				if (fontsize == "12") {
 					maxMessageLength = 12;
 					$("#message").attr("maxlength","12");
 				} 
+				// Max amount of 24pt characters that fit in the medium circle
 				else if (fontsize == "24") {
 					maxMessageLength = 6;
 					$("#message").attr("maxlength","6");
@@ -250,10 +248,12 @@ $( document ).ready(function() {
 			} 
 
 			else if (size == "lg") {
+				// Max amount of 12pt characters that fit in the large circle
 				if (fontsize == "12") {
 					maxMessageLength = 14;
 					$("#message").attr("maxlength","14");
-				} 
+				}
+				// Max amount of 24pt characters that fit in the large circle
 				else if (fontsize == "24") {
 					maxMessageLength = 9;
 					$("#message").attr("maxlength","9");
@@ -263,11 +263,12 @@ $( document ).ready(function() {
 
 		else if (shape == "square") {
 			if (size == "sm") {
-				// What is the max amount of letters that fit in the small square
+				// Max amount of 12pt characters that fit in the small square
 				if (fontsize == "12") {
 					maxMessageLength = 9;
 					$("#message").attr("maxlength","9");
 				} 
+				// Max amount of 24pt characters that fit in the small square
 				else if (fontsize == "24") {
 					maxMessageLength = 4;
 					$("#message").attr("maxlength","4");
@@ -275,10 +276,12 @@ $( document ).ready(function() {
 			} 
 
 			else if (size == "md") {
+				// Max amount of 12pt characters that fit in the medium square
 				if (fontsize == "12") {
 					maxMessageLength = 12;
 					$("#message").attr("maxlength","12");
 				} 
+				// Max amount of 24pt characters that fit in the medium square
 				else if (fontsize == "24") {
 					maxMessageLength = 6;
 					$("#message").attr("maxlength","6");
@@ -286,10 +289,12 @@ $( document ).ready(function() {
 			} 
 
 			else if (size == "lg") {
+				// Max amount of 12pt characters that fit in the large square
 				if (fontsize == "12") {
 					maxMessageLength = 14;
 					$("#message").attr("maxlength","14");
 				} 
+				// Max amount of 24pt characters that fit in the large square
 				else if (fontsize == "24") {
 					maxMessageLength = 8;
 					$("#message").attr("maxlength","8");
@@ -304,6 +309,7 @@ $( document ).ready(function() {
 					maxMessageLength = 8;
 					$("#message").attr("maxlength","8");
 				} 
+				// Max amount of 24pt characters that fit in the small heart
 				else if (fontsize == "24") {
 					maxMessageLength = 4;
 					$("#message").attr("maxlength","4");
@@ -311,22 +317,25 @@ $( document ).ready(function() {
 			} 
 
 			else if (size == "md") {
+				// Max amount of 12pt characters that fit in the medium heart
 				if (fontsize == "12") {
 					maxMessageLength = 11;
 					$("#message").attr("maxlength","11");
-				} 
+				}
+				// Max amount of 24pt characters that fit in the medium heart
 				else if (fontsize == "24") {
 					maxMessageLength = 5;
 					$("#message").attr("maxlength","5");
 				}
 			} 
 
-			// comments size !!!
 			else if (size == "lg") {
+				// Max amount of 12pt characters that fit in the large heart
 				if (fontsize == "12") {
 					maxMessageLength = 16;
 					$("#message").attr("maxlength","16");
-				} 
+				}
+				// Max amount of 24pt characters that fit in the large heart
 				else if (fontsize == "24") {
 					maxMessageLength = 9;
 					$("#message").attr("maxlength","9");
@@ -334,17 +343,15 @@ $( document ).ready(function() {
 			}
 		} 
 
-			// Get what's in textbox compare char length with max message strip the difference
-			//var newMessage = maxMessageLength;
+			// Get what's in textbox compare char length with max message and strip the difference
 			newMessage = $('#message').val().substring(0, maxMessageLength);
 			//console.log(newMessage);
+
 			// Put new calculated message length into textbox and pendant
 			$('#message').val(newMessage);
 
 			// call calcMessage
 			calcMessage();
-	    	//$('#message-error').css('color', 'black');
-
 
 	        $('#message').attr("maxlength",maxMessageLength);
 	        $('#message-error').html("Max "+maxMessageLength.toString() +" characters");
@@ -392,19 +399,15 @@ $( document ).ready(function() {
 	/*-------------------------------------------------------------------------------------------------
 	Message
 	-------------------------------------------------------------------------------------------------*/
+	// Created a function to determine message and message-error
 	$('#message').keyup(function() {
 		calcMessage();
 		
 	});
-					// Taken from word game ... use to setup type on pendant split on space
-	                // Split on each letter i.e., no space in ''
-	                //var random_word_array = random_word.split('');
-
 
 	/*-------------------------------------------------------------------------------------------------
-	(Bonus) Font chooser
+	Font chooser
 	-------------------------------------------------------------------------------------------------*/
-
 	$("#fs").change(function() {
 	    //alert($(this).val());
 	    $('.changeMe').css("font-family", $(this).val());
@@ -414,18 +417,9 @@ $( document ).ready(function() {
 	    $('.changeMe').css("fontSize", $(this).val() + "px");
 	    fontsize = $(this).val();
 
-	// Startover button clears text from pendant and left message output field
-	//$('#erase-btn').click(function(){
-	//	$('.resetMe').val('');
-		// Clear message and recipient divs
-	//});
-	//$('#refresh-btn').click(function() {
-
-		//changeMaxLength(shape,size);
-		//	console.log(changeMaxLength);
-
 		// Change maximum length message when a new font size is selected pass in shape and size
 		changeMaxLength($('[name|=shapes]:checked').val(),$('[name|=size]:checked').val());
+	
 	});
 
 
@@ -437,7 +431,6 @@ $( document ).ready(function() {
 		// Reset color and texture
 		$('#canvas').css('background-color', 'white');
 		$('#canvas').css('background-image', '');
-
 
 		// Clear message and recipient divs
 		$('#message-output').html("");
@@ -456,83 +449,10 @@ $( document ).ready(function() {
 	    // Concatenate message with max
 	    $('#message-error').html('Max ' + maxMessageLength + ' characters');
 
-		// reset circle as selected
-
-	//$('#erase').html("");
-
-		// Remove any shapes
+		// Remove any shapes from preview
 		$('#pendant').html("");
 
 	});
-
-
-	/*-------------------------------------------------------------------------------------------------
-	Toggle, chain specs hidden until clicked ... 
-	see: http://www.metaltoad.com/blog/detect-which-element-was-clicked-using-jquery
-	-------------------------------------------------------------------------------------------------*/
-
-	// Bind event to image with class chains
-	$('.chains').click (function() {
-
-		// Get class=chains id attribute, show only those lengths
-		var chain_id = $(this).attr('id');
-
-		// Show only lengths for chain image clicked
-		$('.'+chain_id).toggleClass('show-length');	
-		
-		// Message to choose a length
-	    //$('.choose-length').html('Choose a chain length');
-
-	});
-
-	// Bind event to length selected
-	$('.item-length').change(function(){
-
-		// Get the value of length selected which is same name as thickness
-		var $this = $(this);
-		var thickness_id = $(this).val();
-		//console.log(thickness_id);
-		//var chainCost = $(thickness_id).val();
-		//console.log(chainCost);
-
-		// Toggling show-thickness
-		$('#'+thickness_id).toggleClass('show-thickness');	
-	    // Message to choose a thickness
-	    //$('.choose-thickness').html('Choose a chain thickness');
-
-		//console.log(chainCost);
-		//$('#chain-cost-output').html(chainCost);
-
-	});
-
-
-
-	// Bind click event listener on the body
-	// Hide list if user clicks anywhere off of the list itself.
-	/*$('body').on('click.hideDropdown', function(e) {
-
-	  // Check to see if the list is currently displayed.
-	  if ($('.item-length').hasClass('show-length')) {
-	    // If element clicked on is NOT one of the menu list items,
-	    // hide the menu list.
-	    if (!$(e.target).parent().hasClass('item-length')) {
-	      $('.item-length').removeClass('show-length');
-	    }
-	  }
-	});*/
-
-
-
-	/*-------------------------------------------------------------------------------------------------
-	Remove a shapes from the canvas
-	-------------------------------------------------------------------------------------------------*/
-	//$('#canvas').on('click', '.shapes', function() {
-	//$('.shapes').click(function(){
-
-		// Remove any shapes
-	//	var new_image = $(this).remove();
-
-	//});
 
 
 	/*-------------------------------------------------------------------------------------------------
