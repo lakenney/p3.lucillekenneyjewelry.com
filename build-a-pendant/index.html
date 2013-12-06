@@ -20,8 +20,8 @@
 
 	<!-- Left side with all the controls -->
 	<div id='controls'>
-		<p>
-			Let hand stamped words on the elegant beauty of fine silver or bronze carry a message of love and inspiration to your loved ones that will last the test of time.
+		<p class='intro-para'>
+			Let hand stamped words on the elegant beauty of fine silver or bronze carry a message of love and inspiration to someone special.
 		</P>
 			<!--http://jsfiddle.net/pV8yg/-->
 			<hr>
@@ -35,9 +35,8 @@
 					<input type="radio" name="shapes" value="heart">
 					<label>heart</label>
 					<br>
-					<br>
 				</div>
-					<br><br>
+					<br>
 			<hr>
 				<h2>Pick a metal</h2>
 				<div class="radioLeft">
@@ -45,7 +44,7 @@
 					<input type="radio" name="metals" value="bronze">
 					bronze<br>
 				</div><!--radioLeft-->
-					<br><br>
+					<br>
 			<hr>
 				<h2>Pick a size</h2>
 					<input type="radio" name="size" value="sm">sm
@@ -54,21 +53,21 @@
 					<input type="radio" name="size" value="lg">
 					lg
                     <br>
-					<br>
 					This pendant costs: $<span id='output'></span>
-					<br><br>
+					<br>
 
-					<button>Recalculate</button>
-					<br><br>
+					<!--<button>Recalculate</button>
+					<br><br>-->
 
 		<!-- Message -->	
 			<h2>Type a message</h2>
-			<input type='text' id='message' class="changeMe" maxlength="16"> 
+			<input type='text' id='message' class="changeMe resetMe" maxlength="16"> 
 			<div id='message-error'>Max 16 characters</div>
 
 			<br>
 			<!--<a href='javascript:'>change font size</a>-->
-    			<button>erase</button>
+    			<!--<button id="erase-btn" class='reset'>erase</button>-->
+				<input type='button' id='erase-btn' value='erase'>
     			<select id="fs"> 
         			<option value="Arial">Arial</option>
         			<option value="Verdana ">Verdana </option>
@@ -174,23 +173,22 @@
 
 	<!-- Right side with the live preview -->
 	<div id='preview'>
-	
-		<div id='preview-background'>
-			<div id='canvas'>
-				<div id='pendant-container'>
-					<div id='pendant'></div>
-				</div><!--pendant-container-->
-				<div id='message-window'>
-					<div id='message-output' class='changeMe'></div>
-				</div><!--message-window-->	
+			<div id='preview-background'>
+			  <div id='canvas'>
+				  <div id='pendant-container'>
+						<div id='pendant'></div>
+					</div><!--pendant-container-->
+					<div id='message-window'>
+						<div id='message-output' class='changeMe'></div>
+					</div><!--message-window-->	
 
-			</div><!--canvas-->
-			Total: $<span id='total'>0.00</span> <br><br>
-		</div><!--end preview-background-->
-		
-		<!-- Buttons -->
-		<input type='button' id='refresh-btn' value='Start over'>
-		<input type='button' id='print-btn' value='Print'>
+			  </div><!--canvas-->
+				Total: $<span id='total'>0.00</span> <br><br>
+			</div><!--end preview-background-->
+			
+			<!-- Buttons -->
+			<input type='button' id='refresh-btn' value='Start over'>
+			<input type='button' id='print-btn' value='Print'>
 	</div><!-- end preview-->
 
 </div><!--Wrapper div-->
