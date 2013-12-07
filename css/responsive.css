@@ -65,7 +65,7 @@ table {
 /*begin Ian Yates Mobile First Responsive styles tweaked to suit my needs*/
 
 body {
-	font: 16px/1.4em 'PT Sans', sans-serif;;
+	/*font: 16px/1.4em 'PT Sans', sans-serif;*/
 	color: #1c1c1c;
 }
 
@@ -546,7 +546,13 @@ footer {
 /*media queries*/
 
 @media only screen and (min-width: 768px) {
-		
+
+
+	* {
+	  	font-family:Arial;
+	  	font-size: 12px;
+	  	/*color:#333;*/
+  	}	
 	a.to_nav {
 		display: none;
 	}

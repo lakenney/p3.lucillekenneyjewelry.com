@@ -18,10 +18,7 @@ $( document ).ready(function() {
 	var how_many_left = 16;
 
 	// Default setup
-			changeMaxLength($('[name|=shapes]:checked').val(),$('[name|=size]:checked').val()), fontsize;
-			// Hard coded
-			//changeMaxLength('shape','size', "24");
-			//console.log("The maxMessageLength is " + maxMessageLength);
+	changeMaxLength($('[name|=shapes]:checked').val(),$('[name|=size]:checked').val()), fontsize;
 
 	/*-------------------------------------------------------------------------------------------------
 	Pick a shape, metal and size
@@ -153,7 +150,6 @@ $( document ).ready(function() {
 				else if (metal == "bronze") {
 					var sm_heart_weight_grm = 48.2;
 					pendantCost = bronze_price_grm * sm_heart_weight_grm;				
-					//console.log('This is small bronze heart')
 				}
 			} 
 			//(pendantCost for medium silver heart
@@ -166,7 +162,6 @@ $( document ).ready(function() {
 				else if (metal == "bronze") {
 					var md_heart_weight_grm = 62.37;
 					pendantCost = bronze_price_grm * md_heart_weight_grm;					
-					//console.log('This is medium bronze heart')
 				}
 			}
 			//(pendantCost for large silver heart
