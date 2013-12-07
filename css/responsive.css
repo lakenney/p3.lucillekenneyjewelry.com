@@ -19,7 +19,7 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	outline: 0;
-	/*font-size: 60%;
+	/*font-size: 100%;
 	font: inherit;*/
 	vertical-align: baseline;
 }
@@ -412,7 +412,7 @@ span {
 
 p {
 	line-height: 1.5em;
-	font-size: 100%;
+	font-size: 1.5em;
 }
 
 .error {
@@ -527,13 +527,13 @@ a.buttonLink {
 	clear:both;
 }
 footer {
-	font-family: 'PT Serif', serif;
+	/*font-family: 'PT Serif', serif;*/
 	color: #e4e4e4;
 	height: 50px;
 	font-style: italic;
 	text-align: center;
 	vertical-align: -50px;
-	font-size: 14px;
+	font-size: 10px;
 	background: #49afcc;
 	padding: 0 10px 10px 10px;
 	clear:both;
