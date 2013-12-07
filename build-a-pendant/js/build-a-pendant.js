@@ -10,7 +10,7 @@ Submitted 6 Dec 2013
 
 -------------------------------------------------------------------------------------------------*/	
 // Set document ready
-$( document ).ready(function() {
+$(document).ready(function() {
 
 	// Global variables
 	var maxMessageLength = 16;
@@ -494,7 +494,7 @@ $( document ).ready(function() {
 	    new_tab_contents += '</head>';
 	    new_tab_contents += '<body>'; 
 	    new_tab_contents += canvas; // Here's where we add the pendant to our HTML for the new tab
-	    new_tab_contents += pendant; // Here's where we add pendant css to center to text to our HTML for the new tab
+	    //new_tab_contents += pendant; // Here's where we add pendant css to center to text to our HTML for the new tab
 	    new_tab_contents += '</body></html>';
 	    
 		// Ok, our card is ready to go, we just need to work on opening the tab
