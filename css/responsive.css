@@ -120,7 +120,7 @@ header {
 		header:after {
 		    clear:both;
 		}
-		
+		/* These are hacks for IE 6/7 and so do not validate*/
 		/* For IE 6/7 (trigger hasLayout) */
 		header {
 		    zoom:1;
